@@ -15,7 +15,7 @@
 
 Bettbox의 의미：Better Experience, Out of the box (뛰어난 경험을, 설치하자마자 바로).
 
-[![Latest Release](https://img.shields.io/github/v/release/appshubcc/Bettbox?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/appshubcc/Bettbox/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/appshubcc/Bettbox/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/appshubcc/Bettbox/releases) 
+[![Latest Release](https://img.shields.io/github/v/release/miuiadmin/speedcat-client?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/miuiadmin/speedcat-client/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/miuiadmin/speedcat-client/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/miuiadmin/speedcat-client/releases) 
 ---
 ### ✈️ Telegram 커뮤니티
 
@@ -29,7 +29,7 @@ Bettbox의 의미：Better Experience, Out of the box (뛰어난 경험을, 설�
 
 ## 🛠️ 설치 및 다운로드
 
-플랫폼과 시스템에 맞는 최신 설치 패키지를 **[[Releases]](https://github.com/appshubcc/Bettbox/releases)** 페이지에서 다운로드하십시오.
+플랫폼과 시스템에 맞는 최신 설치 패키지를 **[[Releases]](https://github.com/miuiadmin/speedcat-client/releases)** 페이지에서 다운로드하십시오.
 
 * **모든 데스크톱 플랫폼**: **Windows** (x64/arm64), **macOS** (Intel/Apple Silicon), **Linux** (x64/arm64)
 * **Android 기기**: Android (ARMv8/ ARMv7/ x86_64/ Universal)

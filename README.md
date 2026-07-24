@@ -15,7 +15,7 @@
 
 Bettbox意为: Better Experience, Out of the box，卓越体验，亦开箱可用
 
-[![Latest Release](https://img.shields.io/github/v/release/appshubcc/Bettbox?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/appshubcc/Bettbox/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/appshubcc/Bettbox/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/appshubcc/Bettbox/releases) 
+[![Latest Release](https://img.shields.io/github/v/release/miuiadmin/speedcat-client?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/miuiadmin/speedcat-client/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/miuiadmin/speedcat-client/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/miuiadmin/speedcat-client/releases) 
 ---
 ### ✈️ Telegram 社区交流
 
@@ -35,7 +35,7 @@ Bettbox意为: Better Experience, Out of the box，卓越体验，亦开箱可�
 
 ## 🛠️ 安装与下载
 
-请前往 **[[Releases]](https://github.com/appshubcc/Bettbox/releases)** 页面下载最新适合您平台和系统的安装包
+请前往 **[[Releases]](https://github.com/miuiadmin/speedcat-client/releases)** 页面下载最新适合您平台和系统的安装包
 
 
 * **全平台桌面端**: **Windows** (x64/arm64), **macOS** (Intel/Apple Silicon), **Linux** (x64/arm64)

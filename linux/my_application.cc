@@ -18,13 +18,13 @@ static int _lock_fd = -1;
 
 static gchar* _get_lock_file_path() {
   const gchar* user_data_dir = g_get_user_data_dir();
-  return g_build_filename(user_data_dir, "com.appshub.bettbox", "Bettbox.lock", nullptr);
+  return g_build_filename(user_data_dir, "com.speedcat.client", "Bettbox.lock", nullptr);
 }
 
 static gchar* _get_control_socket_path(gboolean dev) {
   const gchar* user_data_dir = g_get_user_data_dir();
   const gchar* name = dev ? "BettboxDev.control.sock" : "Bettbox.control.sock";
-  return g_build_filename(user_data_dir, "com.appshub.bettbox", name, nullptr);
+  return g_build_filename(user_data_dir, "com.speedcat.client", name, nullptr);
 }
 
 static gboolean _try_acquire_instance_lock() {
@@ -133,11 +133,11 @@ static void my_application_activate(GApplication* application) {
   if (use_header_bar) {
     GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
     gtk_widget_show(GTK_WIDGET(header_bar));
-    gtk_header_bar_set_title(header_bar, "Bettbox");
+    gtk_header_bar_set_title(header_bar, "Speedcat");
     gtk_header_bar_set_show_close_button(header_bar, TRUE);
     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
   } else {
-    gtk_window_set_title(window, "Bettbox");
+    gtk_window_set_title(window, "Speedcat");
   }
 
   gtk_window_set_default_size(window, 1280, 720);

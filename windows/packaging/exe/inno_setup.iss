@@ -165,7 +165,7 @@ var
   i: Integer;
 begin
   SetArrayLength(RegistryKeys, 2);
-  RegistryKeys[0] := 'Software\com.appshub.bettbox';
+  RegistryKeys[0] := 'Software\com.speedcat.client';
   RegistryKeys[1] := 'Software\com.appshub\Bettbox';
   
   for i := 0 to GetArrayLength(RegistryKeys)-1 do
@@ -183,7 +183,7 @@ begin
   AppDataPath := ExpandConstant('{userappdata}');
   
   SetArrayLength(UserDataPaths, 2);
-  UserDataPaths[0] := AppDataPath + '\com.appshub.bettbox';
+  UserDataPaths[0] := AppDataPath + '\com.speedcat.client';
   UserDataPaths[1] := AppDataPath + '\com.appshub\Bettbox';
   
   for i := 0 to GetArrayLength(UserDataPaths)-1 do

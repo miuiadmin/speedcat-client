@@ -46,7 +46,7 @@ class AboutView extends StatelessWidget {
         ListItem(
           title: const Text('Github Releases'),
           onTap: () {
-            globalState.openUrl('https://github.com/appshubcc/Bettbox');
+            globalState.openUrl('https://github.com/miuiadmin/speedcat-client');
           },
           trailing: const Icon(Icons.star),
         ),

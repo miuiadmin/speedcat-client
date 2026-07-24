@@ -407,7 +407,7 @@ class AppController {
       final profile = profiles
           .where((e) => e.id == currentProfileId)
           .firstOrNull;
-      final profileName = profile?.label ?? 'Bettbox';
+      final profileName = profile?.label ?? 'Speedcat';
       final speedInfo = traffic.toString();
       await vpn_service.service?.updateNotificationSpeed(
         profileName,
@@ -1635,7 +1635,7 @@ class AppController {
 
       // Add marker file
       final markerData = json.encode({
-        'app': 'Bettbox',
+        'app': 'Speedcat',
         'version': '1.0',
         'timestamp': DateTime.now().millisecondsSinceEpoch,
       });

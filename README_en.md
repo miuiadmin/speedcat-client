@@ -15,7 +15,7 @@ Following the principle of "Better Experience", Bettbox inherits the excellent u
 
 Bettbox stands for: Better Experience, Out of the box.
 
-[![Latest Release](https://img.shields.io/github/v/release/appshubcc/Bettbox?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/appshubcc/Bettbox/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/appshubcc/Bettbox/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/appshubcc/Bettbox/releases) 
+[![Latest Release](https://img.shields.io/github/v/release/miuiadmin/speedcat-client?style=for-the-badge&logo=github&color=238636&label=Release)](https://github.com/miuiadmin/speedcat-client/releases/latest) [![Core](https://img.shields.io/github/v/release/MetaCubeX/mihomo?style=for-the-badge&logo=go&logoColor=white&color=8A2BE2&label=Mihomo)](https://github.com/MetaCubeX/mihomo/releases/latest) [![Downloads](https://img.shields.io/github/downloads/miuiadmin/speedcat-client/total?style=for-the-badge&logo=github&color=007ec6)](https://github.com/miuiadmin/speedcat-client/releases) 
 ---
 ### ✈️ Telegram Community
 
