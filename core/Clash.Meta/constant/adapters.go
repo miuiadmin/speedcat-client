@@ -53,6 +53,9 @@ const (
 	OpenVPN
 	Tailscale
 	GostRelay
+	// Speedcat = speedcat(速猫)outbound(docs/17 §4 4-switch fork 第 1 件:iota)。
+	// 须在 String() 加对应 case,否则 AdapterType 渲染 "Unknown"。
+	Speedcat
 )
 
 const (
@@ -60,9 +63,8 @@ const (
 	DefaultUDPTimeout = dialer.DefaultUDPTimeout
 	DefaultDropTime   = 12 * DefaultTCPTimeout
 	DefaultTLSTimeout = DefaultTCPTimeout
+	DefaultTestURL    = "https://www.gstatic.com/generate_204"
 )
-
-var DefaultTestURL = "https://www.gstatic.com/generate_204"
 
 var ErrNotSupport = errors.New("no support")
 
@@ -237,6 +239,9 @@ func (at AdapterType) String() string {
 		return "Tailscale"
 	case GostRelay:
 		return "GostRelay"
+	// speedcat(4-switch 第 1 件:String case)。漏加 → "Unknown"。
+	case Speedcat:
+		return "Speedcat"
 	case Relay:
 		return "Relay"
 	case Selector:
