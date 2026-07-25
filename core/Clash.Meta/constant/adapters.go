@@ -63,8 +63,12 @@ const (
 	DefaultUDPTimeout = dialer.DefaultUDPTimeout
 	DefaultDropTime   = 12 * DefaultTCPTimeout
 	DefaultTLSTimeout = DefaultTCPTimeout
-	DefaultTestURL    = "https://www.gstatic.com/generate_204"
 )
+
+// var(非 const):Bettbox core/common.go:307 按用户 params.TestURL 运行时覆盖全局默认测速 URL,
+// 须可赋值;上游 mihomo Alpha 把它放 const 块(不可赋值)→ 本 vendored 快照拉出独立 var 解编译错。
+// 仅 DefaultTestURL 改 var;DefaultDropTime/TLSTimeout 是 const 算术,留 const 块内。
+var DefaultTestURL = "https://www.gstatic.com/generate_204"
 
 var ErrNotSupport = errors.New("no support")
 
