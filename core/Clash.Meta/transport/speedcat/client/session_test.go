@@ -1,6 +1,6 @@
 // session_test.go —— SessionTx/SessionRx self-test(快路/伪装路 round-trip + 重放拒 + ctr 耗尽 + 超长 + 篡改)。
 //
-// §5.4:密钥/auth_tag 是密钥 —— 测试只 bytes.Equal / errors.Is,**绝不打 raw**。密钥确定性填充(非生产)。
+// 密钥/auth_tag 是密钥 —— 测试只 bytes.Equal / errors.Is,**绝不打 raw**。密钥确定性填充(非生产)。
 // 对照 Rust session.rs 的同款不变量(stream 保序 → ctr 严格递增;重放检查在 AEAD 后)。
 
 package client
@@ -14,7 +14,7 @@ import (
 	"github.com/metacubex/mihomo/transport/speedcat/wire"
 )
 
-// testKeyNonce 确定性 32B key + 12B nonce base(self-test 用;**非生产密钥**,§6.3 永不复用到生产)。
+// testKeyNonce 确定性 32B key + 12B nonce base(self-test 用;**非生产密钥**,永不复用到生产)。
 func testKeyNonce(seed byte) (crypto.Key, [crypto.NonceLen]byte) {
 	var k crypto.Key
 	for i := range k {
@@ -103,7 +103,38 @@ func TestSessionReplay(t *testing.T) {
 	}
 }
 
-// TestSessionCtrExhaustion 证 tx ctr > 0xF000_0000 → ErrCtrExhaustion(防 nonce 空间耗尽,03 §4.3)。
+func TestSkippableUnknownDiscardedCriticalRejected(t *testing.T) {
+	// 方案 1C:high-bit 未知(0x80+)→ 解码当 Padding 盲丢;低位未知(0x0B-0x7F)→ ParseHeader 拒。双路径(AEAD + 快路)。
+	for _, noInner := range []bool{false, true} {
+		k, n := testKeyNonce(0x44)
+		tx := SessionTx{key: k, nonceBase: n, noInnerAEAD: noInner}
+		rx := SessionRx{key: k, nonceBase: n, noInnerAEAD: noInner}
+		// skippable 0x85(Go FrameType 是 byte,cast 造未知类型)。
+		var enc []byte
+		if _, err := tx.EncryptFrameInto(wire.FrameType(0x85), []byte("future-frame"), &enc); err != nil {
+			t.Fatal(err)
+		}
+		hdr, err := wire.ParseHeader(enc[:wire.FrameHeaderLen])
+		if err != nil {
+			t.Fatalf("noInner=%v: skippable ParseHeader 应接受, got %v", noInner, err)
+		}
+		var out []byte
+		ft, p, err := rx.DecryptFrame(hdr, enc[wire.FrameHeaderLen:], &out)
+		if err != nil || ft != wire.FramePadding || len(p) != 0 {
+			t.Fatalf("noInner=%v: skippable 应当 Padding 盲丢, got ft=%#x len=%d err=%v", noInner, byte(ft), len(p), err)
+		}
+		// critical 0x0B → ParseHeader 拒(fail-loud)。
+		var enc2 []byte
+		if _, err := tx.EncryptFrameInto(wire.FrameType(0x0B), []byte("x"), &enc2); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := wire.ParseHeader(enc2[:wire.FrameHeaderLen]); err != wire.ErrUnknownFrameType {
+			t.Fatalf("noInner=%v: critical 未知应 ErrUnknownFrameType, got %v", noInner, err)
+		}
+	}
+}
+
+// TestSessionCtrExhaustion 证 tx ctr > 0xF000_0000 → ErrCtrExhaustion(防 nonce 空间耗尽)。
 func TestSessionCtrExhaustion(t *testing.T) {
 	k, n := testKeyNonce(0x44)
 	tx := SessionTx{key: k, nonceBase: n, ctr: ctrExhaustionBound + 1, noInnerAEAD: true}

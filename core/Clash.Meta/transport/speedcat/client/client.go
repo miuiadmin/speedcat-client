@@ -7,7 +7,7 @@
 // StreamConn 持 conn + tx + rx;[StreamConn.Relay] 把本地应用流(如 SOCKS5 客户端 TCP)与 speedcat conn
 // 双向桥接(委托 [Relay])。方向:tx=C2S(发向 server)/ rx=S2C(收自 server),client 侧。
 //
-// **panic-free / 错误走 error**(被 mihomo import 的库,§6.1 对 Go 的等价约束)。
+// **panic-free / 错误走 error**(被 mihomo import 的库,对 Go 的等价约束)。
 
 package client
 
@@ -43,6 +43,12 @@ type Client struct {
 // NewClient 构造客户端(cfg/kind 决定传输;psk 进握手;params 声明 caps + max_bw)。
 // kind=QUIC 时惰性构造 quicPool + udpPool(L4 收尾;对照 Rust Client::new 建空池)。
 func NewClient(cfg transport.Config, kind transport.Kind, psk crypto.Psk, params handshake.Params) *Client {
+	// ADR-016 PADDING 塑形门控(与 Rust server/client 对称):TCP / raw-tcp(伪装路)offer CapPadding;
+	// QUIC(速度路)不 offer。快路 client caps = 自身声明(0-RTT 无协商)→ 必须 kind != QUIC 时才 offer,
+	// 否则 QUIC client 会误塑形。单一 chokepoint:所有 caller(socks5 binary / mihomo fork outbound)自动正确。
+	if kind != transport.KindQUIC {
+		params.Caps.SetPadding(true)
+	}
 	c := &Client{cfg: cfg, kind: kind, psk: psk, params: params}
 	if kind == transport.KindQUIC {
 		c.quicPool = transport.NewQuicPool(cfg)
